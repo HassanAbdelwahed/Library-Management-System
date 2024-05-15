@@ -30,6 +30,9 @@ public class Patron {
     @Column
     private String details;
 
+    public Patron() {
+    }
+
     public Patron(int patronId, String firstName, String lastName, Date birthday, String email, String address, String phone, String password, String gender, String details) {
         PatronId = patronId;
         this.firstName = firstName;
@@ -41,6 +44,10 @@ public class Patron {
         this.password = password;
         this.gender = gender;
         this.details = details;
+    }
+
+    public Patron(int patronId) {
+        PatronId = patronId;
     }
 
     public int getPatronId() {

@@ -26,6 +26,16 @@ public class BorrowingRecord {
     @JoinColumn(name = "patron_id")
     private Patron patron;
 
+    public BorrowingRecord() {
+    }
+
+    public BorrowingRecord(Date borrowingDate, Date returnDate, Book book, Patron patron) {
+        this.borrowingDate = borrowingDate;
+        this.returnDate = returnDate;
+        this.book = book;
+        this.patron = patron;
+    }
+
     public BorrowingRecord(int borrowingRecordId, Date borrowingDate, Date returnDate) {
         this.borrowingRecordId = borrowingRecordId;
         this.borrowingDate = borrowingDate;
