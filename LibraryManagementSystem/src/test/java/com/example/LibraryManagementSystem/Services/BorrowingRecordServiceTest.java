@@ -1,5 +1,8 @@
 package com.example.LibraryManagementSystem.Services;
 
+import com.example.LibraryManagementSystem.DTOS.BookDTO;
+import com.example.LibraryManagementSystem.DTOS.BorrowingRecordDTO;
+import com.example.LibraryManagementSystem.DTOS.PatronDTO;
 import com.example.LibraryManagementSystem.Models.Book;
 import com.example.LibraryManagementSystem.Models.BorrowingRecord;
 import com.example.LibraryManagementSystem.Models.Patron;
@@ -121,5 +124,23 @@ public class BorrowingRecordServiceTest {
         Mockito.when(bookRepository.findById(bookId)).thenReturn(Optional.of(book));
         Mockito.when(borrowingRecordRepository.findByBook_IdAndPatron_IdAndReturn_DateIsNull(bookId, patronId)).thenReturn(Optional.of(borrowingRecord));
         assertEquals(borrowingRecordService.returnBook(bookId, patronId).getMessage(), "Bock returned Successfully");
+    }
+
+    @Test
+    public void borrowBook_Succeed() {
+        int bookId = 5, patronId = 5;
+        Book book = new Book("541ddll", "Data Structure", "Mohamed",
+                "2021",
+                "Computer Science",
+                "Ali");
+        BorrowingRecord borrowingRecord = new BorrowingRecord(Date.valueOf("2024-05-16"), null, new Book(bookId), new Patron(patronId));
+        BorrowingRecordDTO borrowingRecordDTO = new BorrowingRecordDTO(Date.valueOf("2024-05-16"), null, bookId, patronId);
+        book.setBorrowed(false);
+        Mockito.when(bookRepository.existsById(bookId)).thenReturn(true);
+        Mockito.when(patronRepository.existsById(patronId)).thenReturn(true);
+        Mockito.when(bookRepository.findById(bookId)).thenReturn(Optional.of(book));
+        Mockito.when(borrowingRecordRepository.save(Mockito.any(BorrowingRecord.class))).thenReturn(borrowingRecord);
+        Mockito.when(modelMapper.map(Mockito.any(BorrowingRecord.class), Mockito.eq(BorrowingRecordDTO.class))).thenReturn(borrowingRecordDTO);
+        assertEquals(borrowingRecordService.borrowBook(bookId, patronId), borrowingRecordDTO);
     }
 }
