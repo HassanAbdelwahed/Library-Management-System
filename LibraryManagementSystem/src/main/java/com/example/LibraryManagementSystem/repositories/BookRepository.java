@@ -10,4 +10,6 @@ import java.util.List;
 public interface BookRepository extends JpaRepository<Book, Integer> {
     @Override
     List<Book> findAll();
+
+    Boolean existsBybookISBN(String bookISBN);
 }

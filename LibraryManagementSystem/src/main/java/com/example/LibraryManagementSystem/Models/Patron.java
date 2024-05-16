@@ -2,29 +2,27 @@ package com.example.LibraryManagementSystem.Models;
 
 import jakarta.persistence.*;
 import lombok.NonNull;
+import org.antlr.v4.runtime.misc.NotNull;
 
 import java.sql.Date;
-
 @Entity
 @Table
 public class Patron {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int PatronId;
-    @Column
+    @Column(nullable = false)
     private String firstName;
-    @Column
+    @Column(nullable = false)
     private String lastName;
     @Column
     private java.sql.Date birthday;
-    @Column
+    @Column(unique = true, nullable = false)
     private String email;
     @Column
     private String address;
     @Column
     private String phone;
-    @Column
-    private String password;
     @Column
     private String gender;
     @Column
@@ -33,7 +31,7 @@ public class Patron {
     public Patron() {
     }
 
-    public Patron(int patronId, String firstName, String lastName, Date birthday, String email, String address, String phone, String password, String gender, String details) {
+    public Patron(int patronId, String firstName, String lastName, Date birthday, String email, String address, String phone, String gender, String details) {
         PatronId = patronId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -41,7 +39,17 @@ public class Patron {
         this.email = email;
         this.address = address;
         this.phone = phone;
-        this.password = password;
+        this.gender = gender;
+        this.details = details;
+    }
+
+    public Patron(String firstName, String lastName, Date birthday, String email, String address, String phone, String gender, String details) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.birthday = birthday;
+        this.email = email;
+        this.address = address;
+        this.phone = phone;
         this.gender = gender;
         this.details = details;
     }
@@ -104,14 +112,6 @@ public class Patron {
 
     public void setPhone(String phone) {
         this.phone = phone;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getGender() {

@@ -4,6 +4,9 @@ import com.example.LibraryManagementSystem.DTOS.BookDTO;
 import com.example.LibraryManagementSystem.Services.BookService;
 import com.example.LibraryManagementSystem.utils.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -41,9 +44,6 @@ public class BookController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<ApiResponse> deleteBook(@PathVariable int id) {
-        bookService.deleteBook(id);
-        System.out.println("odoo");
-        ApiResponse apiResponse = new ApiResponse("Success", "Book deleted successfully");
-        return new ResponseEntity<ApiResponse>(apiResponse, HttpStatus.OK);
+        return new ResponseEntity<ApiResponse>(bookService.deleteBook(id), HttpStatus.OK);
     }
 }

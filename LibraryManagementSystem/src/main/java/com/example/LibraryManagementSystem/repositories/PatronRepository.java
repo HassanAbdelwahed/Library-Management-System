@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PatronRepository extends JpaRepository<Patron, Integer> {
+    boolean existsByEmail(String email);
 }

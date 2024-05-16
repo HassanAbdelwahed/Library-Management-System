@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "patrons")
+@RequestMapping(path = "api/patrons")
 public class PatronController {
 
     public PatronService patronService;
@@ -34,6 +34,7 @@ public class PatronController {
 
     @PostMapping
     public ResponseEntity<PatronDTO> createPatron(@RequestBody PatronDTO PatronDTO) {
+        System.out.println("ddjdj");
         return new ResponseEntity<PatronDTO>(patronService.createPatron(PatronDTO), HttpStatus.CREATED);
     }
 
