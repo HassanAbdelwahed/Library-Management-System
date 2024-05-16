@@ -19,19 +19,26 @@ public class Book {
     @Column
     private String category;
     @Column
-    private int amount;
-    @Column
     private String publisher;
+    @Column
+    private boolean isBorrowed;
 
-    public Book(int bookId, String bookISBN, String title, String author, String publicationYear, String category, int amount, String publisher) {
+    public Book() {
+    }
+
+    public Book(int bookId, String bookISBN, String title, String author, String publicationYear, String category, String publisher, boolean isBorrowed) {
         this.bookId = bookId;
         this.bookISBN = bookISBN;
         this.title = title;
         this.author = author;
         this.publicationYear = publicationYear;
         this.category = category;
-        this.amount = amount;
         this.publisher = publisher;
+        this.isBorrowed = isBorrowed;
+    }
+
+    public Book(int bookId) {
+        this.bookId = bookId;
     }
 
     public int getBookId() {
@@ -82,19 +89,19 @@ public class Book {
         this.category = category;
     }
 
-    public int getAmount() {
-        return amount;
-    }
-
-    public void setAmount(int amount) {
-        this.amount = amount;
-    }
-
     public String getPublisher() {
         return publisher;
     }
 
     public void setPublisher(String publisher) {
         this.publisher = publisher;
+    }
+
+    public boolean isBorrowed() {
+        return isBorrowed;
+    }
+
+    public void setBorrowed(boolean borrowed) {
+        isBorrowed = borrowed;
     }
 }
