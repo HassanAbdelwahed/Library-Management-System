@@ -12,7 +12,8 @@ Follow This link:
 
 All Api Required are implemnted
 
-I used Swagger for Api documentation. After Run The Application put this link [http://localhost:8080/swagger-ui/index.html] in the broswer to interact with Apis implemented in this application
+I used Swagger for Api documentation. After Run The Application put this link [http://localhost:8080/swagger-ui/index.html] in the broswer to interact with Apis implemented in this application.
+API Documnentation [https://github.com/HassanAbdelwahed/Library-Management-System/blob/main/Api_End_Point_documentation.pdf]
 
 ## Data Storage:
 MySQL used in this project to persist book, patron, and borrowing record details.
