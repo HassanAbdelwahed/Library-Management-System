@@ -12,7 +12,7 @@ Follow This link:
 
 All Api Required are implemnted
 
-I used Swagger for Api documentation. After Run The Application put this link [http://localhost:8080/swagger-ui/index.html] in the broswer to interact with Apis implemented in this application.
+I used Swagger for Api documentation. After Run The Application put this link [http://localhost:8080/swagger-ui/index.html] in the broswer to interact with Apis implemented in this application. <br />
 API Documnentation [https://github.com/HassanAbdelwahed/Library-Management-System/blob/main/Api_End_Point_documentation.pdf]
 
 ## Data Storage:
@@ -24,7 +24,7 @@ MySQL used in this project to persist book, patron, and borrowing record details
 logging using Aspect-Oriented Programming (AOP) implemented to log method calls, exceptions, and performance metrics (execution time) of operations like book additions, updates, and patron transactions.
 
 ### Caching :
-Caffeine cache implemnted in this project.
+Caffeine cache implemnted in this project. <br />
 Caffeine is a high-performance and in-memory caching library. It provides a fast and efficient implementation of a key-value cache, designed to optimize read and write operations.
 
 ## Transaction Management:
