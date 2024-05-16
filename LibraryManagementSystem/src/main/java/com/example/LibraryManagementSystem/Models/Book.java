@@ -2,13 +2,15 @@ package com.example.LibraryManagementSystem.Models;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
+
 @Entity
 @Table
-public class Book {
+public class Book implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int bookId;
-    @Column
+    @Column(unique = true, nullable = false)
     private String bookISBN;
     @Column
     private String title;
@@ -35,6 +37,15 @@ public class Book {
         this.category = category;
         this.publisher = publisher;
         this.isBorrowed = isBorrowed;
+    }
+
+    public Book(String bookISBN, String title, String author, String publicationYear, String category, String publisher) {
+        this.bookISBN = bookISBN;
+        this.title = title;
+        this.author = author;
+        this.publicationYear = publicationYear;
+        this.category = category;
+        this.publisher = publisher;
     }
 
     public Book(int bookId) {

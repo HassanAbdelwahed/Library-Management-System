@@ -11,4 +11,5 @@ import java.util.Optional;
 public interface BorrowingRecordRepository extends JpaRepository<BorrowingRecord, Integer> {
     @Query(value = "SELECT * FROM BorrowingRecord a WHERE a.book_id = :bookId AND a.patron_id = :patronId AND return_date = null", nativeQuery = true)
     Optional<BorrowingRecord> findByBook_IdAndPatron_IdAndReturn_DateIsNull(int bookId, int patronId);
+
 }
